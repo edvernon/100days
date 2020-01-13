@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <br>
+    <br>
+    <br>
+    <meta charset="utf-8">
+    <meta name="created" content="Mon, 14 Oct 2013 23:33:51 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Data Entry for my Personal Log</title>
+    <script>
+        function startform() {
+            var date1 =  new Date();
+            document.start.date.value = formatDate(date1);
+            document.finish.date.value = formatDate(date1);
+            document.start.start_time.value = formatTime(date1);
+            document.finish.end_time.value = formatTime(date1);
+            document.note.date.value = formatDate(date1);
+        }
+        function formatDate(date1) {
+            return date1.getFullYear() + '-' + (date1.getMonth() < 9 ? '0' : '') + (date1.getMonth()+1) + '-' + (date1.getDate() < 10 ? '0' : '') + date1.getDate();
+        }
+        function formatTime(date1) {
+            return date1.getHours() + ':' + date1.getMinutes();
+        }
+    </script>
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        .grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.grid-container > div {
+  /*background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 40px 0;
+  font-size: 30px;*/
+}
+
+body {
+    background-image: url("floating.jpg");
+}
+
+h1 {
+    
+    font-weight: bold;
+    color: black; 
+    text-shadow: 2px 2px gray;
+}
+
+table {
+    background-color: transparent;
+}
+
+
+</style>
+</head>
+
+<body onload="startform()">
+    <div class="grid-container">
+        <div class="item1">
+            <h3><a href="http://www.edvernon.com">Ed Vernon Home</a></h3>
+            <h1>Links to Projects</h1>
+            <ul>
+                <li><a href="http://cp.edvernon.com/index.html">Course Planner</a></li><br>
+                <li><a href="http://ca111.edvernon.com">Intro to Colunary Arts 111 Spring 2017</a></li><br>
+                <li><a href="http://ca111sp18.edvernon.com">Intro to Colunary Arts 111 Spring 2018</a></li>
+            </ul>
+        </div>
+        <div class="item2">
+            <table>
+                <tr>
+                    <td>
+                        <form action="start.php" method="post" title="Start work for the day" name="start">
+                            <fieldset>
+                                <legend>Start Time</legend>
+                                <label for="date">Date: </label><input type="text" name="date" value="" size="9"><br />
+                                <label for="start_time">Start Time: </label><input type="text" name="start_time" value="" size="4">
+                                <input type="submit" value="Start" title="Save the start time to the server." />
+                            </fieldset>
+                        </form>
+                        <br />
+                        <form action="finish.php" method="post" title="Finish work for the day" name="finish">
+                            <fieldset>
+                                <legend>Finish Time</legend>
+                                <label for="date">Date: </label><input type="text" autofocus name="date" value="" size="9"><br />
+                                <label for="end_time">Finish Time: </label> <input type="text" name="end_time" value="" size="4">
+                                <input type="submit" value="Finish" title="Save the finish time to the server." />
+                            </fieldset>
+                        </form>
+                        <br />
+                        <form action="note.php" method="post" title="Log a note" name="note">
+                            <fieldset>
+                                <legend>Note Entry</legend>
+                                <label for="date">Date: </label><input type="text" autofocus name="date" value="" size="9">
+                                <label for="comments">Note: </label><br />
+                                <textarea cols="35" rows="7" name="comments" autofocus>...</textarea><br />
+                                <input type="submit" value="Log this Note" title="Save this note to the server." /><br><br>
+                                <fieldset style="background-color:beige;">
+                                    <a href="index.html">Return to entry page</a> &nbsp; ~ <a href="report.php">Show report</a>
+                                </fieldset>
+                            </fieldset>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
